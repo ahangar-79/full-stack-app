@@ -9,7 +9,7 @@ export type StartupTypeCard = Omit<Startup, "author"> & { author?: Author };
 
 const StartupCard = ({ post }: { post: StartupTypeCard }) => {
   const {
-    _createAt,
+    _createdAt,
     views,
     author,
     title,
@@ -23,7 +23,7 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
   return (
     <li className="startup-card group">
       <div className="flex-between">
-        <p className="startup-card-date">{formatDate(_createAt)}</p>
+        <p className="startup-card-date">{formatDate(_createdAt)}</p>
         <div className="flex gap-1.5">
           <EyeIcon className="size-6 text-primary" />
           <span className="text-16-medium">{views}</span>
@@ -51,7 +51,7 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
       <Link href={`/startup/${_id}`}>
         <p className="startup-card_desc">{description}</p>
 
-        <img src={image} alt="placeholder" className="startu-card_img" />
+        <img src={image} alt="placeholder" className="startup-card_img" />
       </Link>
 
       <div className="flex-between gap-3 mt-5">

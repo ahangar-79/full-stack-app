@@ -6,14 +6,15 @@ import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 // import { client } from "@/sanity/lib/client";
 // import { startTurbopackTraceServer } from "next/dist/build/swc/generated-native";
 
-
 export default async function Home({
   searchParams,
 }: {
   searchParams: Promise<{ query?: string }>;
 }) {
   const query = (await searchParams).query;
-  const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY });
+  const params = { search: query || null };
+
+  const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY, params });
 
   // const posts = await client.fetch(STARTUPS_QUERY);
   // console.log(JSON.stringify(posts));
