@@ -11,7 +11,7 @@ const StartupForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [pitch, setPitch] = useState("");
 
-  const handleFormSubmit = async (prevState: any, formData: FormDate) => {
+  const handleFormSubmit = async (prevState: any, formData: FormData) => {
     try {
       const formValues = {
         title: formData.get("title") as string,
@@ -53,82 +53,78 @@ const StartupForm = () => {
         {errors.title && <p className="startup-from_error">{errors.title}</p>}
       </div>
 
-      <form action={() => {}} className="startup-form">
-        <div>
-          <label htmlFor="description" className="startup-form_label">
-            Description
-          </label>
-          <Input
-            id="description"
-            name="description"
-            className="startup-form_input"
-            required
-            placeholder="Startup Description"
-          />
+      <div>
+        <label htmlFor="description" className="startup-form_label">
+          Description
+        </label>
+        <Input
+          id="description"
+          name="description"
+          className="startup-form_input"
+          required
+          placeholder="Startup Description"
+        />
 
-          {errors.description && (
-            <p className="startup-from_error">{errors.description}</p>
-          )}
-        </div>
-      </form>
-      <form action={() => {}} className="startup-form">
-        <div>
-          <label htmlFor="category" className="startup-form_label">
-            Category
-          </label>
-          <Input
-            id="category"
-            name="category"
-            className="startup-form_input"
-            required
-            placeholder="Startup Category (Tech, Health, Education)"
-          />
+        {errors.description && (
+          <p className="startup-from_error">{errors.description}</p>
+        )}
+      </div>
 
-          {errors.category && (
-            <p className="startup-from_error">{errors.category}</p>
-          )}
-        </div>
-      </form>
-      <form action={() => {}} className="startup-form">
-        <div>
-          <label htmlFor="link" className="startup-form_label">
-            Image URL
-          </label>
-          <Input
-            id="link"
-            name="link"
-            className="startup-form_input"
-            required
-            placeholder="Startup Image URL"
-          />
+      <div>
+        <label htmlFor="category" className="startup-form_label">
+          Category
+        </label>
+        <Input
+          id="category"
+          name="category"
+          className="startup-form_input"
+          required
+          placeholder="Startup Category (Tech, Health, Education)"
+        />
 
-          {errors.link && <p className="startup-from_error">{errors.link}</p>}
-        </div>
-        <div data-color-mode="light">
-          <label htmlFor="link" className="startup-form_label">
-            Pitch
-          </label>
-          <MDEditor
-            value={pitch}
-            onChange={(value) => setPitch(value as string)}
-            id="pitch"
-            preview="edit"
-            height={300}
-            style={{ borderRadius: 20, overflow: "hidden" }}
-            textareaProps={{
-              placeholder:
-                "Briefly describe your idea and what problem it solves",
-            }}
-          />
+        {errors.category && (
+          <p className="startup-from_error">{errors.category}</p>
+        )}
+      </div>
 
-          {errors.pitch && <p className="startup-from_error">{errors.pitch}</p>}
-        </div>
+      <div>
+        <label htmlFor="link" className="startup-form_label">
+          Image URL
+        </label>
+        <Input
+          id="link"
+          name="link"
+          className="startup-form_input"
+          required
+          placeholder="Startup Image URL"
+        />
 
-        <Button type="submit" className="startup-form_btn" disabled={isPending}>
-          {isPending ? "Submitting..." : "Submit Your Pitch"}
-          <Send className="size-6 ml-2" />
-        </Button>
-      </form>
+        {errors.link && <p className="startup-from_error">{errors.link}</p>}
+      </div>
+      <div data-color-mode="light">
+        <label htmlFor="pitch" className="startup-form_label">
+          Pitch
+        </label>
+        <MDEditor
+          value={pitch}
+          onChange={(value) => setPitch(value as string)}
+          id="pitch"
+          preview="edit"
+          height={300}
+          style={{ borderRadius: 20, overflow: "hidden" }}
+          textareaProps={{
+            placeholder:
+              "Briefly describe your idea and what problem it solves",
+          }}
+        />
+
+        {errors.pitch && <p className="startup-from_error">{errors.pitch}</p>}
+      </div>
+
+      <Button type="submit" className="startup-form_btn" disabled={isPending}>
+        {isPending ? "Submitting..." : "Submit Your Pitch"}
+        <Send className="size-6 ml-2" />
+      </Button>
     </form>
   );
 };
